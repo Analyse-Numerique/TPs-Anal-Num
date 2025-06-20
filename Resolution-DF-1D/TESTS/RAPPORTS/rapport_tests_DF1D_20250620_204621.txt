@@ -1,0 +1,48 @@
+====================================================================================================
+RAPPORT DE TESTS - DIFFÉRENCES FINIES 1D
+====================================================================================================
+Projet: Résolution par Différences Finies 1D
+Auteur: theTigerFox
+Cours: Analyse Numérique - Master 1
+Institution: École Polytechnique
+Date d'exécution: 2025-06-20 20:46:21
+Méthode testée: Différences finies centrées d'ordre 2
+Équation résolue: -u''(x) = f(x) sur [0,1]
+====================================================================================================
+
+RÉSUMÉ EXÉCUTIF
+--------------------------------------------------
+Statut global: ❌ ÉCHEC
+Tests exécutés: 0
+Succès: 0
+Échecs: 0
+Erreurs: 0
+Ignorés: 0
+Temps d'exécution: 0.000s
+Taux de réussite: 0.0%
+
+ANALYSE DÉTAILLÉE
+--------------------------------------------------
+⚠️ PROBLÈMES DÉTECTÉS
+• 0 test(s) ont échoué
+• 0 erreur(s) technique(s)
+• Vérification de l'implémentation requise
+
+DÉTAIL DES TESTS EXÉCUTÉS
+--------------------------------------------------
+Nom du test                                                  Statut    
+----------------------------------------------------------------------
+
+
+RECOMMANDANTIONS
+--------------------------------------------------
+⚠️ ACTIONS CORRECTIVES REQUISES
+• Corriger les échecs de tests identifiés
+• Vérifier l'implémentation du solver
+• Relancer les tests après corrections
+
+====================================================================================================
+Rapport généré automatiquement le 2025-06-20 20:46:21
+Framework de test: pytest
+Auteur: theTigerFox
+====================================================================================================

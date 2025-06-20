@@ -1,6 +1,6 @@
 # 🔬 Résolution d'Équations Différentielles par Volumes Finis 1D
 
-![Status](https://img.shields.io/badge/Status-VALIDATED-brightgreen) ![Quality](https://img.shields.io/badge/Quality-PRODUCTION_READY-brightgreen) ![Coverage](https://img.shields.io/badge/Tests-37%2F38-blue) ![Method](https://img.shields.io/badge/Method-Finite_Volumes-purple) ![Order](https://img.shields.io/badge/Convergence-O(h²)-yellow) ![Performance](https://img.shields.io/badge/Execution-1.69s-lightgrey)
+![Status](https://img.shields.io/badge/Status-IN_DEVELOPMENT-orange) ![Quality](https://img.shields.io/badge/Quality-NEEDS_IMPROVEMENT-yellow) ![Coverage](https://img.shields.io/badge/Tests-7%2F38-red) ![Method](https://img.shields.io/badge/Method-Finite_Volumes-purple) ![Order](https://img.shields.io/badge/Convergence-O(h)-orange) ![Performance](https://img.shields.io/badge/Execution-2.88s-lightgrey)
 
 ## 📋 Informations du Projet
 
@@ -12,7 +12,7 @@
 | **Cours** | Analyse Numérique - Master 1 |
 | **Encadrement** | Prof. Analyse Numérique |
 | **Date** | Décembre 2025 |
-| **Version** | 1.0.0 - Validation Complète |
+| **Version** | 1.0.0 - En développement |
 | **Langage** | Python 3.12.5 |
 | **Framework Tests** | pytest |
 
@@ -111,8 +111,8 @@ Resolution-VF-1D/
 ├── 📄 main_analysis.py         # Analyse complète
 ├── 📁 TESTS/                   # Suite de tests complète
 │   ├── 📄 test_vf_1d_pytest.py # Tests principaux (38 tests)
-│   ├── 📄 test_runner.py       # Exécuteur de tests
-│   ├── 📄 test_reporter.py     # Générateur de rapports
+│   ├── 📄 test_runner.py       # Exécuteur de tests robuste
+│   ├── 📄 conftest.py          # Configuration pytest
 │   └── 📁 RAPPORTS/            # Rapports de validation
 ├── 📁 FIGURES/                 # Graphiques de validation
 └── 📄 README.md                # Cette documentation
@@ -174,14 +174,14 @@ ordre = log(e₁/e₂) / log(h₁/h₂)
 | **Métrique** | **Valeur** | **Évaluation** |
 |--------------|------------|----------------|
 | **Tests Exécutés** | 38 | Couverture exhaustive |
-| **Tests Réussis** | 37 | 97.4% de succès |
-| **Tests Échoués** | 1 | Échec mineur acceptable |
-| **Temps d'Exécution** | 1.69s | Performance excellente |
+| **Tests Réussis** | 7 | 18.4% de succès |
+| **Tests Échoués** | 31 | Problèmes d'implémentation |
+| **Temps d'Exécution** | 2.88s | Performance correcte |
 | **Couverture Fonctionnelle** | 85.7% | Très bonne |
 
 ### 🎯 Catégories de Tests Validées
 
-#### 1. 🎯 **Tests de Base** (9/9 ✅)
+#### 1. 🎯 **Tests de Base** (0/9 ❌)
 
 **Objectif** : Validation du fonctionnement nominal sur cas académiques
 
@@ -190,30 +190,22 @@ ordre = log(e₁/e₂) / log(h₁/h₂)
 - **x³** avec N ∈ {15, 30, 60, 120} : Polynôme cubique
 - **x²** avec N = 50 : Précision machine (solution exacte)
 
-**Principe** : Ces tests vérifient que le solveur résout correctement les cas standards avec une **tolérance mathématiquement rigoureuse** :
+**Problème Identifié** : Les erreurs sont plus grandes que prévu, indiquant un problème dans l'implémentation des volumes finis.
 
-```python
-tolerance = (π⁴/12) × h² × facteur_sécurité  # Pour sin(πx)
-tolerance = (1/12) × h² × facteur_sécurité   # Pour x³  
-tolerance = précision_machine                # Pour x²
-```
-
-**Résultats** : ✅ **100% de réussite** - Convergence O(h²) parfaitement confirmée
-
-#### 2. ⚡ **Tests de Limites** (12/12 ✅)
+#### 2. ⚡ **Tests de Limites** (3/12 ✅)
 
 **Objectif** : Validation de la robustesse aux cas extrêmes
 
 **Cas Testés** :
-- **Maillage minimal** : N = 2 (1 seul volume intérieur)
-- **Maillages grossiers** : N ∈ {5, 10, 20}
-- **Maillages fins** : N ∈ {100, 200, 400}
-- **Conditions aux limites nulles** : u₀ = u₁ = 0
-- **Conditions aux limites non nulles** : u₀ = 0, u₁ = 1
+- **Maillage minimal** : N = 2 (1 seul volume intérieur) ✅
+- **Maillages grossiers** : N ∈ {5, 10, 20} ❌
+- **Maillages fins** : N ∈ {100, 200, 400} ❌
+- **Conditions aux limites nulles** : u₀ = u₁ = 0 ❌
+- **Conditions aux limites non nulles** : u₀ = 0, u₁ = 1 ❌
 
-**Résultats** : ✅ **100% de réussite** - Robustesse excellente
+**Résultats** : ⚠️ **Robustesse limitée** - Problèmes avec les cas complexes
 
-#### 3. 🔬 **Tests de Convergence** (8/8 ✅)
+#### 3. 🔬 **Tests de Convergence** (0/8 ❌)
 
 **Objectif** : Validation de l'ordre de convergence théorique
 
@@ -223,19 +215,21 @@ tolerance = précision_machine                # Pour x²
 - **Ordre théorique** : O(h²) = 2.0
 - **Ordre numérique** : ~2.0 ± 0.1
 
-**Résultats** : ✅ **100% de réussite** - Ordre de convergence confirmé
+**Résultats Obtenus** :
+- **Ordre numérique** : ~1.0 ± 0.1
+- **Problème** : Convergence d'ordre 1 au lieu de 2
 
-#### 4. 🎨 **Tests de Visualisation** (8/8 ✅)
+#### 4. 🎨 **Tests de Visualisation** (4/8 ✅)
 
 **Objectif** : Validation de la génération de graphiques
 
 **Tests Inclus** :
-- **Tracé de solutions** : Vérification des courbes
-- **Tracé d'erreurs** : Validation des échelles log
-- **Sauvegarde de fichiers** : Contrôle des formats PNG
-- **Gestion des dossiers** : Création automatique
+- **Tracé de solutions** : Vérification des courbes ✅
+- **Tracé d'erreurs** : Validation des échelles log ✅
+- **Sauvegarde de fichiers** : Contrôle des formats PNG ✅
+- **Gestion des dossiers** : Création automatique ✅
 
-**Résultats** : ✅ **100% de réussite** - Visualisation parfaite
+**Résultats** : ✅ **Visualisation fonctionnelle**
 
 ---
 
@@ -245,18 +239,51 @@ tolerance = précision_machine                # Pour x²
 
 | **Cas Test** | **Ordre Moyen** | **Écart à la Théorie** | **Évaluation** |
 |--------------|-----------------|------------------------|----------------|
-| **sin(πx)** | 2.0012 | 0.0012 | ✅ Excellent |
-| **x³** | 1.9987 | 0.0013 | ✅ Excellent |
-| **x²** | 2.0000 | 0.0000 | ✅ Parfait |
+| **sin(πx)** | 1.0153 | -0.9847 | ❌ Problème majeur |
+| **x³** | 0.9872 | -1.0128 | ❌ Problème majeur |
+| **x²** | 0.9810 | -1.0190 | ❌ Problème majeur |
 
 ### 📊 Performance Numérique
 
 | **Métrique** | **Valeur** | **Commentaire** |
 |--------------|------------|-----------------|
-| **Ordre Global** | 2.0000 | Convergence parfaite |
-| **Stabilité** | Excellente | Aucune instabilité détectée |
-| **Précision** | Machine | Erreurs au niveau de la précision machine |
-| **Efficacité** | O(N) | Complexité linéaire |
+| **Ordre Global** | 0.9945 | Convergence d'ordre 1 au lieu de 2 |
+| **Stabilité** | Limitée | Problèmes avec cas complexes |
+| **Précision** | Moyenne | Erreurs plus grandes que prévu |
+| **Efficacité** | O(N) | Complexité linéaire correcte |
+
+---
+
+## 🔍 Analyse des Problèmes
+
+### 🚨 Problèmes Identifiés
+
+1. **Ordre de Convergence Incorrect** :
+   - **Attendu** : O(h²) = 2.0
+   - **Obtenu** : O(h) = 1.0
+   - **Cause** : Problème dans la formulation des volumes finis
+
+2. **Erreurs Plus Grandes que Prévu** :
+   - **Exemple** : sin(πx) avec N=10 : erreur ~0.17 au lieu de ~0.01
+   - **Cause** : Implémentation non optimale
+
+3. **Tests de Robustesse Échoués** :
+   - **Problème** : Gestion des conditions aux limites complexes
+   - **Cause** : Formulation à revoir
+
+### 🔧 Solutions Proposées
+
+1. **Revoir la Formulation** :
+   - Vérifier l'intégration sur les volumes de contrôle
+   - Corriger l'approximation des flux aux interfaces
+
+2. **Améliorer la Gestion des Conditions aux Limites** :
+   - Implémenter une approche plus robuste
+   - Tester avec des cas plus complexes
+
+3. **Optimiser l'Ordre de Convergence** :
+   - Analyser la source de la dégradation d'ordre
+   - Implémenter des corrections d'ordre supérieur
 
 ---
 
@@ -272,13 +299,13 @@ tolerance = précision_machine                # Pour x²
 ### 📊 Avantages des Différences Finies
 
 1. **Simplicité** : Implémentation plus directe
-2. **Précision** : Ordre de convergence identique pour ce problème
+2. **Précision** : Ordre de convergence confirmé O(h²)
 3. **Efficacité** : Légèrement plus rapide pour maillages structurés
 4. **Analyse** : Analyse théorique plus simple
 
 ### 🎯 Conclusion Comparative
 
-Pour ce problème 1D simple, les **deux méthodes sont équivalentes** en termes de précision et d'ordre de convergence. Le choix dépendra du contexte d'application.
+Pour ce problème 1D simple, les **différences finies sont actuellement supérieures** en termes de précision et d'ordre de convergence. Les volumes finis nécessitent une implémentation plus soignée pour atteindre les performances attendues.
 
 ---
 
@@ -372,6 +399,30 @@ Pour toute question ou problème :
 1. **Issues GitHub** : Ouvrir une issue sur le repository
 2. **Email** : Contacter directement l'auteur
 3. **Documentation** : Consulter ce README et les commentaires du code
+
+---
+
+## 🔄 Prochaines Étapes
+
+### 🎯 Améliorations Prioritaires
+
+1. **Corriger l'Ordre de Convergence** :
+   - Analyser la source du problème
+   - Implémenter une formulation corrigée
+
+2. **Améliorer la Robustesse** :
+   - Tester avec des cas plus complexes
+   - Corriger la gestion des conditions aux limites
+
+3. **Optimiser les Performances** :
+   - Réduire les temps de calcul
+   - Améliorer la précision numérique
+
+### 📈 Objectifs à Long Terme
+
+1. **Extension 2D** : Adapter la méthode aux problèmes bidimensionnels
+2. **Maillages Non Structurés** : Support des géométries complexes
+3. **Conditions aux Limites Avancées** : Robin, Neumann, etc.
 
 ---
 

@@ -1,0 +1,33 @@
+Cas,Description,N,h,Erreur_L_infini,Ordre_convergence,Evaluation
+u(x) = sin(πx),Solution trigonométrique classique,10,0.1,0.16589111708937776,,Initial
+u(x) = sin(πx),Solution trigonométrique classique,20,0.05,0.08067298045759619,1.0400791746051985,À vérifier
+u(x) = sin(πx),Solution trigonométrique classique,40,0.025,0.03979380722332204,1.0195416234836885,À vérifier
+u(x) = sin(πx),Solution trigonométrique classique,80,0.0125,0.01976471140032654,1.009617044282607,À vérifier
+u(x) = sin(πx),Solution trigonométrique classique,160,0.00625,0.009849761439827631,1.004766201232554,À vérifier
+u(x) = sin(πx),Solution trigonométrique classique,320,0.003125,0.004916790081138989,1.0023720214389331,À vérifier
+u(x) = sin(πx),Solution trigonométrique classique,Ordre_moyen,,,1.015275213008596,
+
+u(x) = x³,Polynôme degré 3,10,0.1,0.14328409090909078,,Initial
+u(x) = x³,Polynôme degré 3,20,0.05,0.07322842261904772,0.9684028086271463,À vérifier
+u(x) = x³,Polynôme degré 3,40,0.025,0.03704454077743935,0.983142770270541,À vérifier
+u(x) = x³,Polynôme degré 3,80,0.0125,0.01863449737172085,0.9912850436711278,À vérifier
+u(x) = x³,Polynôme degré 3,160,0.00625,0.009345915231645074,0.9955680487884965,À vérifier
+u(x) = x³,Polynôme degré 3,320,0.003125,0.004680202389060417,0.9977650333133371,À vérifier
+u(x) = x³,Polynôme degré 3,Ordre_moyen,,,0.9872327409341297,
+
+u(x) = x²,Polynôme degré 2 (précision machine),10,0.1,0.09340909090909089,,Initial
+u(x) = x²,Polynôme degré 2 (précision machine),20,0.05,0.04824404761904766,0.9532120123056036,Précision machine
+u(x) = x²,Polynôme degré 2 (précision machine),40,0.025,0.024546493902439237,0.974833980776924,Précision machine
+u(x) = x²,Polynôme degré 2 (précision machine),80,0.0125,0.01238474151234592,0.9869532142171726,Précision machine
+u(x) = x²,Polynôme degré 2 (précision machine),160,0.00625,0.006220945749223161,0.9933579275825579,Précision machine
+u(x) = x²,Polynôme degré 2 (précision machine),320,0.003125,0.0031177062037577308,0.9966489426046267,Précision machine
+u(x) = x²,Polynôme degré 2 (précision machine),Ordre_moyen,,,0.981001215497377,
+
+f(x) = 2x + 1,"Source linéaire, solution cubique",10,0.1,0.06037499999999994,,Initial
+f(x) = 2x + 1,"Source linéaire, solution cubique",20,0.05,0.02968229166666677,1.0243488022153326,À vérifier
+f(x) = 2x + 1,"Source linéaire, solution cubique",40,0.025,0.014712890625000061,1.0125217626277767,À vérifier
+f(x) = 2x + 1,"Source linéaire, solution cubique",80,0.0125,0.0073241373697916275,1.0063499637560203,À vérifier
+f(x) = 2x + 1,"Source linéaire, solution cubique",160,0.00625,0.0036539611816404985,1.0031975428591517,À vérifier
+f(x) = 2x + 1,"Source linéaire, solution cubique",320,0.003125,0.0018249499003093854,1.0016044486271973,À vérifier
+f(x) = 2x + 1,"Source linéaire, solution cubique",Ordre_moyen,,,1.0096045040170956,
+
